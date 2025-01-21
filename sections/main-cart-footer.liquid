@@ -42,6 +42,20 @@
           {%- case block.type -%}
             {%- when '@app' -%}
               {% render block %}
+            {% when 'gift' %}
+              <p class="cart-attribute__field">
+                <input type="hidden" name="attributes[無料ギフトラッピング]" value="No" form="cart">
+                <input
+                  type="checkbox"
+                  name="attributes[無料ギフトラッピング]"
+                  value="Yes"
+                  {% if cart.attributes['無料ギフトラッピング'] == 'Yes' %}
+                    checked
+                  {% endif %}
+                  form="cart"
+                >
+                <label>無料ギフトラッピング</label>
+              </p>
             {%- when 'subtotal' -%}
               <div class="js-contents" {{ block.shopify_attributes }}>
                 <div>
@@ -178,6 +192,10 @@
     },
     {
       "type": "@app"
+    },
+    {
+      "type": "gift",
+      "name": "無料ギフトラッピング"
     }
   ]
 }
