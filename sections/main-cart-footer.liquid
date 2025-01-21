@@ -56,6 +56,19 @@
                 >
                 <label>無料ギフトラッピング</label>
               </p>
+            {% when 'delivery' %}
+              <p class="cart-attribute__field">
+                <label for="delivery__date">配送日時指定</label>
+                <input
+                  required
+                  class="field__input"
+                  id="delivery__date"
+                  type="text"
+                  name="attributes[配送日時指定]"
+                  value="{{ cart.attributes["配送日時指定"] }}"
+                  form="cart"
+                >
+              </p>
             {%- when 'subtotal' -%}
               <div class="js-contents" {{ block.shopify_attributes }}>
                 <div>
@@ -196,6 +209,10 @@
     {
       "type": "gift",
       "name": "無料ギフトラッピング"
+    },
+    {
+      "type": "delivery",
+      "name": "配送日時指定"
     }
   ]
 }
